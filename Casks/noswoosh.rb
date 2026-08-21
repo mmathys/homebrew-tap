@@ -1,6 +1,6 @@
 cask "noswoosh" do
-  version "1.3.1"
-  sha256 "bd7d819b0cb0d543e7fb0b967e6549c02fa9529165960c582fd06ffd8ff53cce"
+  version "1.4.0"
+  sha256 "2de199cdedc4b329902e2cce3025b0166f0a8361211179776f88dfe2c54c5a87"
 
   url "https://github.com/mmathys/noswoosh/releases/download/v#{version}/noswoosh-#{version}.app.zip"
   name "noswoosh"
@@ -67,11 +67,8 @@ cask "noswoosh" do
       System Settings > Privacy & Security > Accessibility > "+" and select
       #{appdir}/noswoosh.app
 
-    Then restart the daemon:
-
-      launchctl kickstart -k gui/$(id -u)/ax.max.noswoosh
-
-    Ctrl+Left / Ctrl+Right then switch spaces instantly. The grant persists
-    across upgrades.
+    The daemon picks the grant up on its own within a second. Ctrl+Left /
+    Ctrl+Right then switch spaces instantly, and the grant persists across
+    upgrades.
   EOS
 end
