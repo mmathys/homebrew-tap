@@ -1,5 +1,5 @@
 class Noswoosh < Formula
-  desc "No swoosh: instant macOS space switching with Ctrl+arrow keys"
+  desc "Instant macOS space switching with Ctrl+arrow keys, minus the swoosh"
   homepage "https://github.com/mmathys/noswoosh"
   url "https://github.com/mmathys/noswoosh/archive/refs/tags/v1.1.0.tar.gz"
   sha256 "fe53737a6d36e56820df0e442ea3d9f4bb419405ea654b435aad2e2b18563239"
