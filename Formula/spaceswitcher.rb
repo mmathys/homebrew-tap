@@ -1,8 +1,8 @@
 class Spaceswitcher < Formula
   desc "Instant macOS space switching with Ctrl+arrow keys"
   homepage "https://github.com/mmathys/spaceswitcher"
-  url "https://github.com/mmathys/spaceswitcher/archive/refs/tags/v1.0.0.tar.gz"
-  sha256 "562948839be39884c5017bef6ad82e7baa6077a14c137b9345f8afccab0dc1a3"
+  url "https://github.com/mmathys/spaceswitcher/archive/refs/tags/v1.0.1.tar.gz"
+  sha256 "d259f22f1100e3b9c3f17491b9afc7748ce85afab7c3774d2beb9c3faf67d25e"
   license "MIT"
 
   depends_on :macos
@@ -24,37 +24,28 @@ class Spaceswitcher < Formula
 
   def caveats
     <<~EOS
-      Three one-time setup steps:
+      Finish the setup (copy-paste both commands):
 
-      1. Disable the system's ANIMATED Ctrl+arrow shortcuts so spaceswitcher
-         receives the keys (live now, and persisted for future logins):
+        spaceswitcher-ctrl-arrows off      # disable the system's animated Ctrl+arrow shortcuts (live + persisted)
+        brew services start spaceswitcher  # start the daemon now and at every login
 
-           spaceswitcher-ctrl-arrows off
-           defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 79 \\
-             '{enabled = 0; value = { parameters = (65535, 123, 8650752); type = standard; };}'
-           defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 81 \\
-             '{enabled = 0; value = { parameters = (65535, 124, 8650752); type = standard; };}'
+      Then the one step that can't be scripted — grant Accessibility
+      permission (macOS prompts on first start), or add it manually:
+      System Settings > Privacy & Security > Accessibility > "+" and select:
 
-      2. Start the daemon:
+        #{opt_bin}/spaceswitcher
 
-           brew services start spaceswitcher
-
-      3. Grant Accessibility permission (macOS prompts on first start), or add
-         it manually: System Settings > Privacy & Security > Accessibility >
-         "+" and select:
-
-           #{opt_bin}/spaceswitcher
-
-         Then: brew services restart spaceswitcher
+      Then: brew services restart spaceswitcher
 
       NOTE: the Accessibility grant is tied to the binary hash — re-grant it
       after every `brew upgrade spaceswitcher` (remove the entry, restart the
       service, re-approve).
 
-      To undo everything: brew services stop spaceswitcher,
-      spaceswitcher-ctrl-arrows on, re-enable the shortcuts in
-      System Settings > Keyboard > Keyboard Shortcuts > Mission Control,
-      then brew uninstall spaceswitcher.
+      To undo everything:
+
+        brew services stop spaceswitcher
+        spaceswitcher-ctrl-arrows on
+        brew uninstall spaceswitcher
     EOS
   end
 
