@@ -1,8 +1,8 @@
 class Noswoosh < Formula
   desc "Instant macOS space switching with Ctrl+arrow keys, minus the swoosh"
   homepage "https://github.com/mmathys/noswoosh"
-  url "https://github.com/mmathys/noswoosh/archive/refs/tags/v1.2.0.tar.gz"
-  sha256 "159f36057fd111b3beba8cb99e59da4a0cbfb7d1add7ae9c9a96c1a38cdc6a1c"
+  url "https://github.com/mmathys/noswoosh/archive/refs/tags/v1.3.0.tar.gz"
+  sha256 "58246e3e08307b803b5385d742f41e15e238c12f9f03ee1c77930c800f6fa541"
   license "MIT"
 
   depends_on :macos
@@ -10,8 +10,7 @@ class Noswoosh < Formula
   def install
     system "swiftc", "noswoosh.swift", "-O", "-o", "noswoosh",
            "-F", "/System/Library/PrivateFrameworks", "-framework", "SkyLight"
-    system "swiftc", "tools/ctrl-arrows.swift", "-O", "-o", "noswoosh-ctrl-arrows"
-    bin.install "noswoosh", "noswoosh-ctrl-arrows"
+    bin.install "noswoosh"
   end
 
   service do
@@ -24,10 +23,9 @@ class Noswoosh < Formula
 
   def caveats
     <<~EOS
-      Finish the setup (copy-paste all three commands):
+      Finish the setup (copy-paste both commands):
 
-        noswoosh-ctrl-arrows off      # disable the system's animated Ctrl+arrow shortcuts (live + persisted)
-        defaults write com.apple.dock workspaces-auto-swoosh -bool NO && killall Dock  # fix the empty-desktop yank
+        noswoosh setup                # shortcuts + empty-desktop yank fix (restarts the Dock)
         brew services start noswoosh  # start the daemon now and at every login
 
       Then the one step that can't be scripted — grant Accessibility
@@ -45,8 +43,7 @@ class Noswoosh < Formula
       To undo everything:
 
         brew services stop noswoosh
-        noswoosh-ctrl-arrows on
-        defaults delete com.apple.dock workspaces-auto-swoosh && killall Dock
+        noswoosh teardown
         brew uninstall noswoosh
     EOS
   end
