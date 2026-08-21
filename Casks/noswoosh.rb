@@ -53,6 +53,9 @@ cask "noswoosh" do
                                      must_succeed: false
     system_command "#{appdir}/noswoosh.app/Contents/MacOS/noswoosh", args:         ["teardown"],
                                                                      must_succeed: false
+    # postflight writes this, so uninstall must remove it: zap only runs with
+    # --zap, and a stale plist points launchd at a binary that no longer exists.
+    FileUtils.rm_f File.expand_path("~/Library/LaunchAgents/ax.max.noswoosh.plist")
   end
 
   zap trash: [
