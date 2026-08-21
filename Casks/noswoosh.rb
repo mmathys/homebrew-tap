@@ -71,7 +71,7 @@ cask "noswoosh" do
 
       launchctl kickstart -k gui/$(id -u)/ax.max.noswoosh
 
-    Ctrl+Left / Ctrl+Right then switch spaces instantly. Because the app is
-    signed with a stable Developer ID, the grant survives future upgrades.
+    Ctrl+Left / Ctrl+Right then switch spaces instantly. The grant persists
+    across upgrades.
   EOS
 end
