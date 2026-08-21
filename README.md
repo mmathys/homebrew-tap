@@ -3,9 +3,9 @@
 Personal Homebrew tap.
 
 ```sh
-brew install mmathys/tap/noswoosh
+brew install --cask mmathys/tap/noswoosh
 ```
 
-| Formula | Description |
+| Cask | Description |
 |---|---|
 | [`noswoosh`](https://github.com/mmathys/noswoosh) | Instant macOS space switching with Ctrl+arrow keys |
