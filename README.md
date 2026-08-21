@@ -3,9 +3,9 @@
 Personal Homebrew tap.
 
 ```sh
-brew install mmathys/tap/spaceswitcher
+brew install mmathys/tap/noswoosh
 ```
 
 | Formula | Description |
 |---|---|
-| [`spaceswitcher`](https://github.com/mmathys/spaceswitcher) | Instant macOS space switching with Ctrl+arrow keys |
+| [`noswoosh`](https://github.com/mmathys/noswoosh) | Instant macOS space switching with Ctrl+arrow keys |
