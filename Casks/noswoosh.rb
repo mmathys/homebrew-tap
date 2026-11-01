@@ -1,6 +1,6 @@
 cask "noswoosh" do
-  version "1.7.6"
-  sha256 "ea25071cd455e634809fa4795f0819a45544d60d5e62621f48e7e509545ad7a3"
+  version "1.7.7"
+  sha256 "a31be7d6b7bbee9fea3d1333ea588e1daf02af52ec379e83dcd52643ebbb5da7"
 
   url "https://github.com/mmathys/noswoosh/releases/download/v#{version}/noswoosh-#{version}.app.zip"
   name "noswoosh"
